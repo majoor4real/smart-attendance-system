@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+</head>
+<body>
+    <h2>Register Student</h2>
+
+    <form method="POST">
+
+        <label>Full Name</label><br>
+        <input type="text" name="full_name" required><br><br>
+
+        <label>Matric Number</label><br>
+        <input type="text" name="matric_no" required><br><br>
+
+        <label>Select Department</label><br>
+        <select name="department_id" required>
+            <option value="">-- Select Department --</option>
+            {% for department in departments %}
+                <option value="{{ department.id }}">
+                    {{ department.name }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Select Courses</label><br>
+        {% for course in courses %}
+            <input type="checkbox" name="courses" value="{{ course.id }}">
+            {{ course.code }} - {{ course.title }}<br>
+        {% endfor %}
+
+        <label>Student Login Account:</label><br>
+        <select name="user_id" required>
+            <option value="">-- Select Student Login --</option>
+            {% for user in student_users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select><br><br>
+            <br>
+        <button type="submit">Register Student</button>
+    </form>
+</body>
+</html>

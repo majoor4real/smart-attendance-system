@@ -1,0 +1,59 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Lecturer Dashboard{% endblock %}
+{% block page_title %}Lecturer Dashboard{% endblock %}
+
+{% block sidebar %}
+<a href="{{ url_for('lecturer.lecturer_dashboard') }}" class="active-link">
+    <i class="fas fa-house"></i> Dashboard
+</a>
+<a href="{{ url_for('lecturer.start_attendance') }}">
+    <i class="fas fa-qrcode"></i> Start Attendance
+</a>
+<a href="{{ url_for('lecturer.lecturer_records') }}">
+    <i class="fas fa-clipboard-list"></i> Attendance Records
+</a>
+<a href="{{ url_for('auth.logout') }}">
+    <i class="fas fa-right-from-bracket"></i> Logout
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h3 class="fw-bold">Welcome, {{ display_name }}</h3>
+    <p class="text-muted">Manage attendance sessions and monitor student participation.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-qrcode"></i></div>
+            <div class="stat-title">Attendance Sessions</div>
+            <div class="stat-value">{{ session_count }}</div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-book"></i></div>
+            <div class="stat-title">Courses</div>
+            <div class="stat-value">{{ course_count }}</div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+            <div class="stat-title">Attendance Records</div>
+            <div class="stat-value">{{ record_count }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-card mt-4">
+    <h5 class="fw-bold mb-3">Lecturer Overview</h5>
+    <p class="text-muted mb-0">
+        Start new attendance sessions, generate QR codes, and monitor student attendance records efficiently.
+    </p>
+</div>
+{% endblock %}

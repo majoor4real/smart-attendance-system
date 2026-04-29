@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Attendance System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.2) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .branding {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .branding img {
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .school-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+        }
+
+        .attendance-icon {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+        }
+
+        .system-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #dbeafe;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .hero-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.92;
+            margin-bottom: 35px;
+        }
+
+        .btn-custom {
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-login {
+            background: white;
+            color: #0f172a;
+            border: none;
+        }
+
+        .btn-login:hover {
+            background: #e2e8f0;
+            transform: translateY(-3px);
+        }
+
+        .btn-signup {
+            background: #22c55e;
+            color: white;
+            border: none;
+        }
+
+        .btn-signup:hover {
+            background: #16a34a;
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        .feature-box {
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.14);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #93c5fd;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-card {
+                padding: 35px 25px;
+            }
+
+            .school-logo {
+                width: 75px;
+                height: 75px;
+            }
+
+            .attendance-icon {
+                width: 65px;
+                height: 65px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="#">Smart Attendance System</a>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-card">
+
+            <!-- Branding Section -->
+            <div class="branding">
+                <img src="{{ url_for('static', filename='images/school_logo.png') }}" alt="School Logo" class="school-logo">
+                <img src="{{ url_for('static', filename='images/attendance_icon.png') }}" alt="Attendance Icon" class="attendance-icon">
+            </div>
+
+            <div class="system-name">Adekunle Ajasin University Akungba Akoko</div>
+
+            <h1 class="hero-title">Welcome to Smart Attendance System</h1>
+            <p class="hero-subtitle">
+                A QR Code Based Attendance Management Platform for Students and Lecturers
+            </p>
+            <p class="hero-text">
+                This system simplifies attendance management by allowing lecturers to generate QR-based attendance sessions,
+                while students can securely mark attendance, register courses, and track their attendance history in real time.
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+                <a href="{{ url_for('auth.login') }}" class="btn btn-custom btn-login">
+                    <i class="fas fa-right-to-bracket me-2"></i> Login
+                </a>
+                <a href="{{ url_for('auth.signup') }}" class="btn btn-custom btn-signup">
+                    <i class="fas fa-user-plus me-2"></i> Student Sign Up
+                </a>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <div class="feature-title">QR Attendance</div>
+                        <div class="feature-text">
+                            Lecturers can generate secure QR codes for seamless attendance marking.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="feature-title">Course Registration</div>
+                        <div class="feature-text">
+                            Students can register their courses and manage academic attendance records easily.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-title">Attendance Tracking</div>
+                        <div class="feature-text">
+                            Keep track of attendance sessions, records, and participation performance in one place.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="footer-text">
+                Designed for efficient, transparent, and modern academic attendance management.
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>

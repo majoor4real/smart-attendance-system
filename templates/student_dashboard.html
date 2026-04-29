@@ -1,0 +1,78 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Student Dashboard{% endblock %}
+{% block page_title %}Student Dashboard{% endblock %}
+
+{% block sidebar %}
+<a href="{{ url_for('student.student_dashboard') }}" class="active-link">
+    <i class="fas fa-house"></i> Dashboard
+</a>
+
+<a href="{{ url_for('student.register_courses') }}">
+    <i class="fas fa-book-open"></i> Register Courses
+</a>
+
+<a href="{{ url_for('student.my_courses') }}">
+    <i class="fas fa-list-check"></i> My Courses
+</a>
+
+<a href="{{ url_for('student.scan_attendance') }}">
+    <i class="fas fa-qrcode"></i> Scan Attendance
+</a>
+
+<a href="{{ url_for('student.attendance_history') }}">
+    <i class="fas fa-clock-rotate-left"></i> Attendance History
+</a>
+
+<a href="{{ url_for('student.my_attendance_records') }}">
+    <i class="fas fa-table"></i> My Attendance Records
+</a>
+
+<a href="{{ url_for('student.jamb_practice') }}"
+   class="nav-link {% if request.endpoint == 'student.jamb_practice' %}active{% endif %}">
+    <i class="fas fa-laptop"></i> JAMB Practice CBT
+</a>
+<a href="{{ url_for('auth.logout') }}">
+    <i class="fas fa-right-from-bracket"></i> Logout
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h3 class="fw-bold">Welcome, {{ display_name }}</h3>
+    <p class="text-muted">Manage your courses and track your attendance activity.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+            <div class="stat-title">Registered Courses</div>
+            <div class="stat-value">{{ registered_course_count }}</div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+            <div class="stat-title">Attendance Records</div>
+            <div class="stat-value">{{ attendance_count }}</div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-id-card"></i></div>
+            <div class="stat-title">Matric Number</div>
+            <div class="stat-value" style="font-size: 1.1rem;">{{ user.username }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-card mt-4">
+    <h5 class="fw-bold mb-3">Student Overview</h5>
+    <p class="text-muted mb-0">
+        Register your courses, scan attendance sessions, and keep track of your academic attendance history.
+    </p>
+</div>
+{% endblock %}

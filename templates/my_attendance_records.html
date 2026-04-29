@@ -1,0 +1,69 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}My Attendance Records{% endblock %}
+{% block page_title %}My Attendance Records{% endblock %}
+
+{% block sidebar %}
+<a href="{{ url_for('student.student_dashboard') }}">
+    <i class="fas fa-house"></i> Dashboard
+</a>
+
+<a href="{{ url_for('student.register_courses') }}">
+    <i class="fas fa-book-open"></i> Register Courses
+</a>
+
+<a href="{{ url_for('student.my_courses') }}">
+    <i class="fas fa-list-check"></i> My Courses
+</a>
+
+<a href="{{ url_for('student.scan_attendance') }}">
+    <i class="fas fa-qrcode"></i> Scan Attendance
+</a>
+
+<a href="{{ url_for('student.attendance_history') }}">
+    <i class="fas fa-clock-rotate-left"></i> Attendance History
+</a>
+
+<a href="{{ url_for('student.my_attendance_records') }}" class="active-link">
+    <i class="fas fa-table"></i> My Attendance Records
+</a>
+
+<a href="{{ url_for('auth.logout') }}">
+    <i class="fas fa-right-from-bracket"></i> Logout
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-card">
+    <h4 class="fw-bold mb-3">Attendance Records</h4>
+
+    {% if records %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Course Code</th>
+                    <th>Course Title</th>
+                    <th>Session Token</th>
+                    <th>Date Marked</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ record.session.course.course_code }}</td>
+                    <td>{{ record.session.course.course_title }}</td>
+                    <td>{{ record.session.token }}</td>
+                    <td>{{ record.timestamp.strftime('%Y-%m-%d %H:%M') if record.timestamp else 'N/A' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <div class="alert alert-warning">No attendance records found yet.</div>
+    {% endif %}
+</div>
+{% endblock %}

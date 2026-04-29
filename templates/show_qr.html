@@ -1,0 +1,39 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Attendance QR{% endblock %}
+{% block page_title %}Attendance QR{% endblock %}
+
+{% block sidebar %}
+<a href="{{ url_for('lecturer.lecturer_dashboard') }}">
+    <i class="fas fa-house"></i> Dashboard
+</a>
+
+<a href="{{ url_for('lecturer.start_attendance') }}" class="active-link">
+    <i class="fas fa-qrcode"></i> Start Attendance
+</a>
+
+<a href="{{ url_for('lecturer.lecturer_records') }}">
+    <i class="fas fa-clipboard-list"></i> Attendance Records
+</a>
+
+<a href="{{ url_for('auth.logout') }}">
+    <i class="fas fa-right-from-bracket"></i> Logout
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-card text-center">
+    <h4 class="fw-bold mb-3">Attendance QR Code</h4>
+
+    <img src="{{ url_for('static', filename=qr_image) }}" alt="QR Code" class="img-fluid rounded shadow" style="max-width: 300px;">
+
+    <div class="mt-4">
+        <p class="text-muted"><strong>Session Data:</strong></p>
+        <code>{{ qr_data }}</code>
+    </div>
+
+    <a href="{{ url_for('lecturer.start_attendance') }}" class="btn btn-primary mt-4">
+        Start Another Session
+    </a>
+</div>
+{% endblock %}

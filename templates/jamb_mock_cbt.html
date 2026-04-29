@@ -1,0 +1,96 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Student Dashboard{% endblock %}
+{% block page_title %}Student Dashboard{% endblock %}
+
+{% block sidebar %}
+<a href="{{ url_for('student.student_dashboard') }}" class="active-link">
+    <i class="fas fa-house"></i> Dashboard
+</a>
+
+<a href="{{ url_for('student.register_courses') }}">
+    <i class="fas fa-book-open"></i> Register Courses
+</a>
+
+<a href="{{ url_for('student.my_courses') }}">
+    <i class="fas fa-list-check"></i> My Courses
+</a>
+
+<a href="{{ url_for('student.scan_attendance') }}">
+    <i class="fas fa-qrcode"></i> Scan Attendance
+</a>
+
+<a href="{{ url_for('student.attendance_history') }}">
+    <i class="fas fa-clock-rotate-left"></i> Attendance History
+</a>
+
+<a href="{{ url_for('student.my_attendance_records') }}">
+    <i class="fas fa-table"></i> My Attendance Records
+</a>
+
+
+<a href="{{ url_for('auth.logout') }}">
+    <i class="fas fa-right-from-bracket"></i> Logout
+</a>
+{% endblock %}
+
+{% block content %}
+    <div class="cbt-header d-md-flex justify-content-between align-items-center">
+        <h4 class="mb-0">JAMB CBT Practice Interface</h4>
+        <div class="timer-box" id="timer">Time Left: 01:30:00</div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="question-panel">
+                    <h6 class="text-primary">Question 1 of 50</h6>
+                    <p><strong>What does CPU stand for?</strong></p>
+
+                    <div class="form-check mb-2 option-box">
+                        <input class="form-check-input" type="radio" name="q1" id="a">
+                        <label class="form-check-label" for="a">Central Processing Unit</label>
+                    </div>
+                    <div class="form-check mb-2 option-box">
+                        <input class="form-check-input" type="radio" name="q1" id="b">
+                        <label class="form-check-label" for="b">Computer Primary Unit</label>
+                    </div>
+                    <div class="form-check mb-2 option-box">
+                        <input class="form-check-input" type="radio" name="q1" id="c">
+                        <label class="form-check-label" for="c">Central Program Utility</label>
+                    </div>
+                    <div class="form-check mb-2 option-box">
+                        <input class="form-check-input" type="radio" name="q1" id="d">
+                        <label class="form-check-label" for="d">Control Processing Utility</label>
+                    </div>
+
+                    <div class="mt-4 d-flex justify-content-between">
+                        <button class="btn btn-secondary">Previous</button>
+                        <button class="btn btn-primary">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="question-panel">
+                    <h6>Question Navigator</h6>
+                    <div class="question-nav d-flex flex-wrap">
+                        <button class="btn btn-primary">1</button>
+                        <button class="btn btn-outline-secondary">2</button>
+                        <button class="btn btn-outline-secondary">3</button>
+                        <button class="btn btn-outline-secondary">4</button>
+                        <button class="btn btn-outline-secondary">5</button>
+                        <button class="btn btn-outline-secondary">6</button>
+                        <button class="btn btn-outline-secondary">7</button>
+                        <button class="btn btn-outline-secondary">8</button>
+                        <button class="btn btn-outline-secondary">9</button>
+                        <button class="btn btn-outline-secondary">10</button>
+                    </div>
+
+                    <button class="btn btn-success w-100 mt-4">Submit Practice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    
